@@ -31,13 +31,37 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.tsx?$/,
-                use: ['ts-loader']
-            },
-            {
-                test: /\.js$/,
-                use: ['source-map-loader'],
-                enforce: 'pre'
+                test: /\.(js|ts)x?$/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            '@babel/preset-env',
+                            '@babel/preset-typescript',
+                            '@babel/preset-react'
+                        ],
+                        plugins: [
+                            [
+                                'babel-plugin-import',
+                                {
+                                    'libraryName': '@material-ui/core',
+                                    'libraryDirectory': 'esm',
+                                    'camel2DashComponentName': false
+                                },
+                                'core'
+                            ],
+                            [
+                                'babel-plugin-import',
+                                {
+                                    'libraryName': '@material-ui/icons',
+                                    'libraryDirectory': 'esm',
+                                    'camel2DashComponentName': false
+                                },
+                                'icons'
+                            ]
+                        ]
+                    }
+                }
             },
             {
                 test: /\.css$/,

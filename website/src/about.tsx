@@ -9,7 +9,8 @@
  ********************************************************************************/
 
 import * as React from 'react';
-import { Link, Typography, Container, useTheme, makeStyles } from '@material-ui/core';
+import { Link, Typography, Container } from '@material-ui/core';
+import { useTheme, makeStyles } from '@material-ui/styles';
 
 const About = () => {
     const theme = useTheme();
